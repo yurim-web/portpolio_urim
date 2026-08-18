@@ -164,9 +164,9 @@ export const professional_projects: ProfessionalProject[] = [
     description:
       '마케터를 위한 멀티채널 데이터 자동 수집·레포팅 SaaS 서비스로, 랜딩페이지, 웹 페이지(반응형), 가이드 페이지의 프론트엔드를 100% 단독 담당했습니다. 차트·타임블럭 등 외부 라이브러리를 활용해 대시보드, 성과 분석, 체험단 관리 등 다양한 UI와 인터랙션을 구현했습니다.',
     image: `${process.env.PUBLIC_URL}/assets/professional_projects/rx_banner.png`,
-    view_link: 'https://mxrx.dev/',
-    demo_link: 'http://175.45.202.45/',
-    guide_link: 'http://175.45.202.45/guide_book',
+    view_link: 'https://reportingx-web.onrender.com/account/login',
+    demo_link: 'https://markx-web.onrender.com/intro',
+    guide_link: 'https://markx-web.onrender.com/guide_main',
   },
   {
     id: 3,
