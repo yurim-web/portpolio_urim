@@ -351,6 +351,10 @@ const Portfolio = () => {
             modules={[Pagination, Navigation]}
             spaceBetween={0}
             slidesPerView={1}
+            // 슬라이드마다 텍스트·이미지 길이가 달라서, 스와이퍼 컨테이너 높이를
+            // 활성 슬라이드 콘텐츠에 맞게 자동 조절 (안 하면 고정 높이로 잘리거나
+            // 빈 여백이 남음 — 냉부 슬라이드 이미지가 잘려 보이던 버그의 원인)
+            autoHeight
             navigation={{
               nextEl: '.swiper-button-next',
               prevEl: null,

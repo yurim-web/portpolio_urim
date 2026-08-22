@@ -309,6 +309,11 @@
 .portfolio_swiper .swiper-slide .portfolio_item {
   width: 100%;
   margin: 0;
+  /* 데스크톱 책장-스택 애니메이션용 position: absolute를 그대로 물려받고 있으면
+     .swiper-slide가 내용물 높이를 인식하지 못해 0으로 계산되고, 그 결과 스와이퍼
+     컨테이너가 실제 콘텐츠보다 짧게 잡혀 이미지 아래쪽이 잘려 보였다. 모바일에서는
+     일반 흐름으로 되돌려 autoHeight가 슬라이드 실제 높이를 제대로 읽게 한다. */
+  position: static;
 }
 
 .portfolio_swiper .swiper-pagination {
@@ -446,7 +451,9 @@
   .portfolio_item {
     width: 100%;
     height: auto;
-    min-height: 100vh;
+    /* min-height: 100vh였는데, 콘텐츠가 짧은 슬라이드에서 카드 아래로 빈 여백이
+       크게 남는 원인이었음. 콘텐츠 실제 높이만큼만 차지하도록 제거. */
+    padding: 60px 0;
   }
 
   .portfolio_content {
@@ -492,7 +499,9 @@
   }
 
   .portfolio_image_container {
-    height: 350px;
+    /* 실제 프로젝트 스크린샷이 세로로 긴 이미지라, 너무 낮으면 상단 극히 일부만 보여서
+       "이미지가 잘려 보인다"는 인상을 줬음. 조금 더 넉넉하게 보여줌. */
+    height: 420px;
     max-width: none;
   }
 
@@ -565,7 +574,7 @@
   }
 
   .portfolio_image_container {
-    height: 200px;
+    height: 280px;
   }
 
   .portfolio_left_column {
