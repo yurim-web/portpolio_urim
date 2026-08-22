@@ -467,8 +467,20 @@
     align-items: center;
   }
 
+  /* 폭을 명시하지 않으면 내용물 크기만큼만 차지하는 shrink-to-fit 박스가 되는데,
+     그 안의 contact_social만 width: 100%라 서로 다른 기준으로 중앙정렬되면서
+     제목/이메일 줄과 버튼 줄의 중심이 미묘하게 어긋나 보였음 — 폭을 통일해서 해결 */
   .contact_info {
     align-items: center;
+    width: 100%;
+  }
+
+  /* 1024px 구간에서 걸어둔 align-items: flex-start(왼쪽 정렬)가 여기서 다시
+     center로 재정의되지 않아서, 이메일 줄·버튼 줄·Thank you가 제목/부제목과
+     다른 기준(왼쪽 정렬)으로 배치되던 게 진짜 원인 — 중앙정렬로 되돌림 */
+  .contact_details {
+    align-items: center;
+    width: 100%;
   }
 
   .contact_title {
