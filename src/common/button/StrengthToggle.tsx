@@ -9,12 +9,14 @@ interface StrengthToggleProps {
 
 const StrengthToggle: React.FC<StrengthToggleProps> = ({ strength, isActive, onClick }) => {
   return (
-    <div
+    <button
+      type="button"
       className={`strength_toggle ${isActive ? 'active' : ''}`}
       onClick={() => onClick(strength)}
+      aria-pressed={isActive}
     >
       {strength}
-    </div>
+    </button>
   );
 };
 
