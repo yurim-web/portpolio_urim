@@ -59,6 +59,7 @@
 }
 
 .theme_toggle_bottom {
+  font: inherit;
   width: 60px;
   height: 20px;
   border: 2px solid #333333;

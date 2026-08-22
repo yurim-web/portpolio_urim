@@ -103,9 +103,9 @@ const WebDesign = () => {
   return (
     <section ref={sectionRef} className="web_design_section">
       <div className="web_design_container">
-        <h1 ref={titleRef} className="web_design_title">
+        <h2 ref={titleRef} className="web_design_title">
           UI/UX DESIGN.
-        </h1>
+        </h2>
 
         <div ref={gridRef} className="web_design_grid">
           {web_design_projects.map((project, index) => (

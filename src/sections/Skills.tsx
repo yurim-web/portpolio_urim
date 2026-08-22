@@ -22,9 +22,9 @@ const Skills = () => {
 
   return (
     <article ref={sectionRef} className="strength">
-      <h1 ref={titleRef} className="strength_title">
+      <h2 ref={titleRef} className="strength_title">
         Strength.
-      </h1>
+      </h2>
       <div className="strength_toggle_wrapper">
         <StrengthToggleBox activeSkill={activeSkill} onSkillChange={handleSkillChange} />
       </div>
