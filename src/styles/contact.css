@@ -488,7 +488,17 @@
     justify-content: center;
   }
 
+  /* 아이콘 버튼(원형) + 필 버튼 2개가 가로 wrap으로 걸리면 "2개+1개"로 줄바꿈되면서
+     좌우 정렬이 어긋나 보였음 — 모바일에서는 세로로 가지런히 쌓아서 정리 */
   .contact_social {
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .contact_mail_btn {
+    width: 100%;
+    max-width: 280px;
     justify-content: center;
   }
 
