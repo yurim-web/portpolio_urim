@@ -3,6 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import React, { useRef, useEffect } from 'react';
 
 import GitHubLink from '../common/GitHubLink';
+import ResumeLink from '../common/ResumeLink';
 import '../styles/contact.css';
 
 const Contact: React.FC = () => {
@@ -60,11 +61,6 @@ const Contact: React.FC = () => {
 
               <div className="contact_details">
                 <div className="contact_item">
-                  <span className="contact_icon">📞</span>
-                  <span>010-4054-5152</span>
-                </div>
-
-                <div className="contact_item">
                   <span className="contact_icon">✉️</span>
                   <span>lyl5152@naver.com</span>
                 </div>
@@ -89,6 +85,20 @@ const Contact: React.FC = () => {
                       </svg>
                     </div>
                   </a>
+                  <ResumeLink className="contact_mail_btn contact_resume_btn">
+                    <span>경력기술서</span>
+                    <div className="mail_btn_icon">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path
+                          d="M6 12L10 8L6 4"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </ResumeLink>
                 </div>
 
                 {/* Thank you 메시지 */}
@@ -97,26 +107,6 @@ const Contact: React.FC = () => {
                     Thank you <span>😊</span>
                   </p>
                 </div>
-              </div>
-            </div>
-
-            {/* 오른쪽 - QR 코드 */}
-            <div className="contact_qr_section">
-              <div className="contact_qr_container">
-                <a
-                  href="https://open.kakao.com/o/sjeSbVTh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contact_qr_link"
-                >
-                  <div className="contact_qr_code">
-                    <img
-                      src={`${process.env.PUBLIC_URL}/assets/kakao.jpg`}
-                      alt="카카오톡 QR 코드"
-                      className="contact_qr_image"
-                    />
-                  </div>
-                </a>
               </div>
             </div>
           </div>

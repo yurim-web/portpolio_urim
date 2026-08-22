@@ -41,6 +41,8 @@ function App() {
             <ProfessionalProjects />
           </div>
           <div id="portfolio">
+            {/* 냉부(Training Project)는 portfolioData.ts의 portfolio_sections 첫 번째 항목으로 포함되어
+                Learning Projects 캐러셀 안에서 동일한 카드 포맷으로 노출됨 */}
             <Portfolio />
           </div>
           <div id="web_design">

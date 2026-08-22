@@ -15,10 +15,12 @@ const Main = () => {
             PORTFOLIO
           </h1>
           <p className="main_description">
-            디자인부터 프론트엔드 개발까지, 화면의 처음과 끝을 책임지는 개발자 이유림입니다.
+            디자인 경험과 프론트엔드 실무를 바탕으로, 백엔드까지 확장하고 있는 웹 개발자
+            이유림입니다.
             <br />
-            사용자 경험을 중시하며 깔끔하고 효율적인 코드를 작성합니다.
+            사용자 관점의 UI 구현과 원활한 협업을 통해 완성도 높은 웹 서비스를 만들어갑니다.
           </p>
+          <p className="main_subtext">Frontend Experience · Backend Learning</p>
         </div>
       </section>
     </main>

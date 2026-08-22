@@ -21,30 +21,6 @@
   flex-direction: column;
 }
 
-.portfolio_title {
-  font-size: 48px;
-  font-weight: 700;
-  color: #ffffff;
-  text-align: left;
-  margin-bottom: 0;
-  font-family:
-    'Pretendard Variable',
-    Pretendard,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  position: relative;
-  z-index: 10;
-}
-
 .portfolio_horizontal_container {
   display: block;
   width: 100%;
@@ -76,7 +52,15 @@
   width: 90%;
   max-width: 1800px;
   margin: 0 auto;
-  padding: 0 60px;
+  /*
+   * 오른쪽 패딩은 장식이 아니라 Portfolio.tsx의 getSlideOffset(maxOffset=97, step=2.5) 계산과
+   * 짝을 이루는 값이다. 다음 카드가 책장 넘기듯 옆에서 겹쳐 들어올 때, 가장 가까운 카드는
+   * 최소 (maxOffset - (totalItems-2)*step)% 지점부터 화면을 덮는다 — 슬라이드가 5개인 현재
+   * 기준 약 89.5%. 콘텐츠 오른쪽 끝이 그 지점보다 왼쪽에 있어야 이미지가 안 잘린다.
+   * portfolio_sections 항목 수가 늘어나 겹침 시작 지점이 더 왼쪽으로 당겨지면(각 슬라이드가
+   * step=2.5%씩 더 촘촘해짐), 이 padding-right 값도 같이 넉넉하게 늘려줘야 한다.
+   */
+  padding: 0 180px 0 60px;
 }
 
 .portfolio_left_column {
@@ -136,14 +120,6 @@
     sans-serif;
 }
 
-.portfolio_section_content {
-  font-size: 18px;
-  line-height: 1.6;
-  opacity: 0.8;
-  margin: 0;
-  max-width: 500px;
-}
-
 .portfolio_info_row {
   display: flex;
   flex-direction: column;
@@ -173,7 +149,7 @@
 .portfolio_image_container {
   display: block;
   width: 100%;
-  max-width: 700px;
+  max-width: 620px;
   height: 600px;
   border-radius: 12px;
   overflow: hidden;
@@ -192,44 +168,6 @@
 
 .portfolio_section_image:hover {
   transform: scale(1.05);
-}
-
-.portfolio_project_title {
-  font-size: 32px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 20px;
-  position: relative;
-  font-family:
-    'Pretendard Variable',
-    Pretendard,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-}
-
-.portfolio_project_title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #ffffff;
-}
-
-.portfolio_project_info {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
 }
 
 .portfolio_tech_stack {
@@ -437,10 +375,6 @@
     font-size: 36px;
   }
 
-  .portfolio_section_content {
-    font-size: 14px;
-  }
-
   .portfolio_info_label {
     font-size: 11px;
   }
@@ -475,14 +409,6 @@
   .portfolio_content {
     gap: 60px;
     padding: 0 30px;
-  }
-
-  .portfolio_title {
-    font-size: 40px;
-  }
-
-  .portfolio_project_title {
-    font-size: 28px;
   }
 }
 
@@ -519,12 +445,6 @@
     grid-template-columns: 1fr;
     gap: 30px;
     padding: 0 24px;
-  }
-
-  .portfolio_title {
-    font-size: 28px;
-    margin-bottom: 20px;
-    padding: 20px 24px 0;
   }
 
   .portfolio_year {
@@ -600,11 +520,6 @@
     gap: 25px;
   }
 
-  .portfolio_title {
-    font-size: 24px;
-    margin-bottom: 30px;
-  }
-
   .portfolio_year {
     font-size: 12px;
   }
@@ -663,10 +578,6 @@
 /* 다크모드 스타일 */
 [data-theme='dark'] .portfolio_section {
   background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
-}
-
-[data-theme='dark'] .portfolio_title {
-  color: #ffffff;
 }
 
 [data-theme='dark'] .portfolio_year {

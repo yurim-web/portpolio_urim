@@ -18,19 +18,21 @@
 - [로컬 실행 방법](#로컬-실행-방법)
 - [반응형 브레이크포인트](#반응형-브레이크포인트)
 - [브랜치 전략](#브랜치-전략)
+- [관련 문서](#관련-문서)
 
 ---
 
 ## 🛠️ 기술 스택
 
-| 분류 | 사용 기술 |
-|---|---|
-| 프레임워크 | React 18 + TypeScript |
-| 애니메이션 | GSAP, ScrollTrigger |
-| 스타일링 | CSS (컴포넌트 단위 분리) |
-| 버전 관리 | Git / GitHub |
-| 배포 | gh-pages |
-| 개발 도구 | husky, lint-staged, ESLint |
+| 분류                    | 사용 기술                                                            |
+| ----------------------- | -------------------------------------------------------------------- |
+| 프레임워크              | React 18 + TypeScript                                                |
+| 애니메이션              | GSAP, ScrollTrigger                                                  |
+| 스타일링                | CSS (컴포넌트 단위 분리)                                             |
+| 버전 관리               | Git / GitHub                                                         |
+| 배포                    | gh-pages                                                             |
+| 개발 도구               | husky, lint-staged, ESLint                                           |
+| 학습 중 (Backend/Cloud) | Java, Spring, Spring Boot, SQL, JdbcTemplate, H2, Thymeleaf, AWS EC2 |
 
 ---
 
@@ -38,8 +40,9 @@
 
 - **라이트 / 다크 모드** 전환 (localStorage에 상태 저장)
 - **GSAP ScrollTrigger** 기반 스크롤 애니메이션
-- **스킬 탭 UI** — 탭 클릭 시 해당 카드 강조 + 3D 효과
+- **스킬 탭 UI** — 카테고리별 그룹 + 탭 클릭 시 해당 카드 강조 + 3D 효과
 - **프로젝트 상세 모달** — 기간, 기술 스택, 설명, 링크 제공
+- **경력기술서 PDF 다운로드** — 헤더(데스크톱/모바일), Contact 섹션에서 새 탭으로 열람
 - **우측 고정 네비게이션** — 스크롤 위치 자동 감지 후 현재 섹션 표시
 - **완전 반응형** — 모바일~데스크톱 4단계 브레이크포인트
 
@@ -48,32 +51,39 @@
 ## 📐 섹션 구성
 
 ### 🏠 Main
+
 - 메인 히어로 타이틀 + 소개 텍스트
 - 배경 블러 오브젝트 float 애니메이션
 
 ### 👋 About
+
 - 자기소개 텍스트 (프론트엔드 개발자 포지션)
 - 이력 타임라인 (경력 · 교육 · 자격증)
 
 ### 🎯 Strength
-- 16개 스킬 탭 버튼
+
+- 카테고리별(Frontend / Backend·Cloud — Currently Learning / Development Tools / Collaboration·Design Tools) 스킬 탭 버튼
 - 탭 클릭 시 해당 스킬 카드 강조 + 3D 애니메이션
 - 스킬 이미지 + 설명 텍스트 구성
 
 ### 💼 Professional Projects
-- 실무 프로젝트 3개 (Herzion Shop, ReportingX., 스웨디시 뉴트라)
+
+- 실무 프로젝트 3개: ReviewX, ReportingX., Herzion Shop
 - 기간, 역할, 기술 스택, 설명, 링크 제공
 
 ### 📂 Learning Projects
-- 개인 학습 프로젝트 4개 (Groundplace, IMELE, SAINT LAURENT, Waveyy)
-- 카드 클릭 시 상세 모달
+
+- 첫 번째 카드로 Training Project(냉부 | Recipe Community, 백엔드 교육 수강 후 진행한 4인 팀 프로젝트) 노출, 이어서 개인 학습 프로젝트 4개(Waveyy, Groundplace, IMELE, SAINT LAURENT) — 총 5개, 동일한 카드 포맷
+- GSAP ScrollTrigger 기반 pin 스크롤 캐러셀, 기간·참여도·기술 스택·설명 제공
 
 ### 🎨 UI/UX Design
+
 - 웹·앱 디자인 작업물 갤러리 (9개)
 - 그리드 레이아웃
 
 ### 📞 Contact
-- 이메일 연락처 및 SNS 링크
+
+- 이메일 연락처, GitHub 링크, 경력기술서 PDF 다운로드 버튼
 
 ---
 
@@ -86,17 +96,18 @@ src/
 ├── assets/
 │   ├── design_img/        # UI/UX 디자인 갤러리 이미지
 │   ├── professional_img/  # 실무 프로젝트 배너 이미지
-│   └── skill_img/         # 스킬 아이콘 이미지
+│   └── skill_img/         # 스킬 아이콘 이미지 (Frontend/Backend/Tools/Design 배지 포함)
 ├── common/
 │   ├── box/               # 스킬 카드 컴포넌트
 │   ├── button/            # 테마·이력서 토글 버튼
-│   └── GitHubLink.tsx     # 공용 GitHub 링크 컴포넌트
+│   ├── GitHubLink.tsx     # 공용 GitHub 링크 컴포넌트
+│   └── ResumeLink.tsx     # 공용 경력기술서 PDF 링크 컴포넌트
 ├── contexts/
 │   ├── ThemeContext.tsx    # 라이트·다크 모드 전역 상태
 │   └── SectionContext.tsx  # 섹션 추적 전역 상태
 ├── data/
-│   ├── portfolioData.ts   # 프로젝트 데이터
-│   ├── skillsData.ts      # 스킬 데이터 (Single Source of Truth)
+│   ├── portfolioData.ts   # Professional Projects + Learning Projects(냉부 Training Project 포함) 데이터
+│   ├── skillsData.ts      # 스킬 데이터 (Single Source of Truth, category 포함)
 │   └── webDesignData.ts   # 웹 디자인 데이터
 ├── hooks/
 │   ├── useHeaderScroll.ts  # 헤더 스크롤 훅
@@ -104,6 +115,10 @@ src/
 ├── sections/              # 섹션별 컴포넌트
 ├── styles/                # 섹션별 CSS
 └── types/                 # TypeScript 타입 선언
+
+public/
+└── assets/
+    └── resume/             # 경력기술서 PDF (경력기술서_이유림.pdf)
 ```
 
 ---
@@ -133,12 +148,12 @@ npm run deploy
 
 ## 📱 반응형 브레이크포인트
 
-| 브레이크포인트 | 대상 기기 | 주요 변경 사항 |
-|---|---|---|
-| 1024px 이하 | 태블릿 | 폰트 축소, 스킬 카드 1열 전환 |
-| 768px 이하 | 모바일 | 레이아웃 세로 전환, 패딩 축소 |
-| 480px 이하 | 소형 모바일 | 폰트 추가 축소, 텍스트 중앙 정렬 |
-| 360px 이하 | 초소형 기기 | 최소 폰트 적용 (32px 제목) |
+| 브레이크포인트 | 대상 기기   | 주요 변경 사항                   |
+| -------------- | ----------- | -------------------------------- |
+| 1024px 이하    | 태블릿      | 폰트 축소, 스킬 카드 1열 전환    |
+| 768px 이하     | 모바일      | 레이아웃 세로 전환, 패딩 축소    |
+| 480px 이하     | 소형 모바일 | 폰트 추가 축소, 텍스트 중앙 정렬 |
+| 360px 이하     | 초소형 기기 | 최소 폰트 적용 (32px 제목)       |
 
 ---
 
@@ -146,7 +161,16 @@ npm run deploy
 
 - `main` : 배포용 브랜치
 - `feature/*` : 기능 단위 개발 브랜치
-- 커밋 컨벤션 : `[기능]` / `[콘텐츠]` / `[설정]` / `[리팩토링]` prefix 사용
+- `release/x.0.0` : 마일스톤 스냅샷 (frozen) — 자세한 규칙은 [`docs/versioning.md`](docs/versioning.md) 참고
+- 커밋 컨벤션 : `[콘텐츠]` / `[기능]` / `[스타일]` / `[리팩토링]` / `[정리]` / `[설정]` / `[문서]` prefix 사용
+
+---
+
+## 📚 관련 문서
+
+- [`docs/component-spec.md`](docs/component-spec.md) — 컴포넌트별 역할·Props·데이터 명세서
+- [`docs/versioning.md`](docs/versioning.md) — release 브랜치 규칙, package.json 버전과의 관계
+- [`docs/CHANGELOG.md`](docs/CHANGELOG.md) — 버전별 변경 이력
 
 ---
 

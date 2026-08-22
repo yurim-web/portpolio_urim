@@ -9,9 +9,10 @@
 ## 목차
 
 1. [Sections (섹션 컴포넌트)](#sections)
-2. [Common/Box](#commonbox)
-3. [Common/Button](#commonbutton)
-4. [Contexts](#contexts)
+2. [Common](#common)
+3. [Common/Box](#commonbox)
+4. [Common/Button](#commonbutton)
+5. [Contexts](#contexts)
 
 ---
 
@@ -25,11 +26,45 @@
 | Main | `Main.tsx` | 메인 히어로 섹션, 타이틀 + 소개 텍스트 |
 | About | `About.tsx` | 자기소개, 이력 타임라인 (경력·교육·자격증) |
 | Skills | `Skills.tsx` | Strength 섹션 — 스킬 탭 + 카드 |
-| Project | `Project.tsx` | Portfolio 섹션 — Learning Projects 카드 목록 |
-| ProfessionalProjects | `ProfessionalProjects.tsx` | 실무 프로젝트 3개 카드 목록 |
-| Portfolio | `Portfolio.tsx` | Project 섹션 레이아웃 래퍼 |
+| Project | `Project.tsx` | Portfolio 섹션 — Professional/Learning/UI-UX 개요 카드 목록 (앵커 이동) |
+| ProfessionalProjects | `ProfessionalProjects.tsx` | 실무 프로젝트 3개 카드 목록 (ReviewX, ReportingX., Herzion Shop) |
+| Portfolio | `Portfolio.tsx` | Learning Projects 섹션 레이아웃 래퍼. 냉부(Training Project)를 `portfolio_sections` 첫 번째 항목으로 포함해 개인 프로젝트와 동일한 카드 포맷으로 노출 |
 | WebDesign | `WebDesign.tsx` | UI/UX 디자인 작업물 갤러리 그리드 |
-| Contact | `Contact.tsx` | 연락처, SNS 링크, Copyright |
+| Contact | `Contact.tsx` | 연락처, SNS 링크, 경력기술서 PDF 버튼, Copyright |
+
+---
+
+## Common
+
+### GitHubLink
+
+> `src/common/GitHubLink.tsx`
+> GitHub 프로필 링크 공용 컴포넌트. Header(데스크톱/모바일), Contact에서 사용.
+
+**Props**
+
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| `size` | `number` | 아이콘 크기(px) |
+| `className` | `string` | 링크 요소 클래스 |
+| `iconClassName` | `string` | SVG 아이콘 클래스 |
+| `onClick` | `() => void` (optional) | 클릭 시 호출되는 콜백 (모바일 메뉴 닫기 등) |
+| `children` | `ReactNode` (optional) | 아이콘 옆 텍스트 (모바일 메뉴에서 "GitHub" 표시용) |
+
+---
+
+### ResumeLink
+
+> `src/common/ResumeLink.tsx`
+> 경력기술서 PDF 링크 공용 컴포넌트. Header(데스크톱/모바일), Contact에서 사용. `public/assets/resume/경력기술서_이유림.pdf`를 새 탭으로 연다.
+
+**Props**
+
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| `className` | `string` | 링크 요소 클래스 |
+| `onClick` | `() => void` (optional) | 클릭 시 호출되는 콜백 |
+| `children` | `ReactNode` | 버튼 텍스트/아이콘 |
 
 ---
 
@@ -57,7 +92,7 @@
 ### StrengthContentsBox
 
 > `src/common/box/StrengthContentsBox.tsx`
-> 스킬 카드 전체 목록 컨테이너. `skillData` 배열을 내부에서 관리하며, 활성 스킬에 맞는 카드 강조 애니메이션을 처리.
+> 스킬 카드 전체 목록 컨테이너. `skillsData.ts`의 `skillList`(category 포함) 배열을 순서대로 렌더링하며, category가 바뀌는 지점에 그룹 헤더를 삽입. 활성 스킬에 맞는 카드 강조 애니메이션도 처리.
 
 **Props**
 
@@ -65,33 +100,23 @@
 |---|---|---|
 | `activeSkill` | `string \| null` | 현재 선택된 스킬 이름 (없으면 null) |
 
-**내부 데이터 (skillData)**
+**카테고리 구성 (skillsData.ts → skillList)**
 
-| 스킬 | 이미지 |
+| 카테고리 | 스킬 |
 |---|---|
-| HTML | html.png |
-| CSS | css.png |
-| Javascript | javascript.png |
-| TypeScript | typescript.png |
-| React | react.png |
-| Next.js | next.png |
-| Gsap.js | gsap.png |
-| Git | git.png |
-| GitHub | github.png |
-| SourceTree | sourcetree.png |
-| Notion | notion_icon.svg |
-| Confluence | confluence.svg |
-| Figma | figma.png |
-| Photoshop | photoshop.png |
-| Illustrator | illustrator.png |
-| Cafe24 | cafe24.png |
+| Frontend | HTML, CSS, JavaScript, React, TypeScript, Next.js |
+| Backend / Cloud — Currently Learning | Java, Spring, Spring Boot, SQL, JdbcTemplate, H2, Thymeleaf, AWS EC2 |
+| Development Tools | Git, GitHub |
+| Collaboration / Design Tools | Figma, Notion, Slack, Confluence, Illustrator, Photoshop |
+
+> Chart.js, GSAP, Cafe24, EmailJS 등은 프로젝트별 `tech_stack`에서만 사용되며 Skills 위젯에는 포함하지 않는다.
 
 ---
 
 ### StrengthToggleBox
 
 > `src/common/box/StrengthToggleBox.tsx`
-> 스킬 탭 버튼 목록 컨테이너. 16개 스킬 탭을 렌더링하고 선택 상태를 관리.
+> 스킬 탭 버튼 목록 컨테이너. `skillList`를 category 단위로 그룹핑해 카테고리 제목 + 탭 버튼 행을 렌더링하고 선택 상태를 관리.
 
 **Props**
 

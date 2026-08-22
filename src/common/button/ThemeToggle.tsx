@@ -29,9 +29,14 @@ const ThemeToggle: React.FC = () => {
       >
         <div className="theme_toggle_circle" />
       </button>
-      <div className="theme_toggle_bottom" onClick={scrollToTop}>
+      <button
+        type="button"
+        className="theme_toggle_bottom"
+        onClick={scrollToTop}
+        aria-label="맨 위로 이동"
+      >
         <span className="theme_toggle_bottom_text">TOP</span>
-      </div>
+      </button>
     </div>
   );
 };

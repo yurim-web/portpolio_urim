@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import GitHubLink from '../common/GitHubLink';
+import ResumeLink from '../common/ResumeLink';
 import useHeaderScroll from '../hooks/useHeaderScroll';
 import '../styles/header.css';
 
@@ -20,12 +21,15 @@ const Header = () => {
     <header className="header_container">
       <nav className="nav">
         <div className="nav_logo">
-          <h1
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            style={{ cursor: 'pointer' }}
+          <a
+            href="#main"
+            onClick={e => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           >
             YURIM'S WEB PORTFOLIO
-          </h1>
+          </a>
         </div>
         <div className="nav_right">
           <ul className="nav_menu">
@@ -68,6 +72,7 @@ const Header = () => {
             </li>
           </ul>
           <div className="header_social">
+            <ResumeLink className="resume_link">RESUME PDF</ResumeLink>
             <GitHubLink size={24} className="github_link" iconClassName="github_icon" />
           </div>
         </div>
@@ -101,6 +106,11 @@ const Header = () => {
             <a href="#contact" className="mobile_nav_link" onClick={closeMobileMenu}>
               CONTACT
             </a>
+          </li>
+          <li>
+            <ResumeLink className="mobile_nav_link" onClick={closeMobileMenu}>
+              RESUME PDF
+            </ResumeLink>
           </li>
           <li className="mobile_social">
             <GitHubLink

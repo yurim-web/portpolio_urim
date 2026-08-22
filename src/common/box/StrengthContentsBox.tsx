@@ -137,15 +137,21 @@ const StrengthContentsBox = ({ activeSkill }: { activeSkill: string | null }) =>
 
   return (
     <div ref={containerRef} className="strength_content_container">
-      {skillList.map((skill, index) => (
-        <div
-          key={skill.name}
-          ref={el => (cardsRef.current[index] = el)}
-          className="strength_card_wrapper"
-        >
-          <StrengthContents contents={skill.description} skill={skill.name} img={skill.img} />
-        </div>
-      ))}
+      {skillList.map((skill, index) => {
+        const isNewCategory = index === 0 || skillList[index - 1].category !== skill.category;
+        return (
+          <React.Fragment key={skill.name}>
+            {isNewCategory && (
+              <div className="strength_category_header">
+                <span className="strength_category_title">{skill.category}</span>
+              </div>
+            )}
+            <div ref={el => (cardsRef.current[index] = el)} className="strength_card_wrapper">
+              <StrengthContents contents={skill.description} skill={skill.name} img={skill.img} />
+            </div>
+          </React.Fragment>
+        );
+      })}
     </div>
   );
 };

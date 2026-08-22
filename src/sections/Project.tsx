@@ -8,18 +8,36 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import '../styles/project.css';
 
+/**
+ * 클릭 가능한 비-버튼 요소(div/li)에 마우스·키보드 활성화를 동시에 부여하는 헬퍼.
+ * Enter/Space 입력을 클릭과 동일하게 처리해 키보드 사용자도 접근할 수 있게 한다.
+ * (work_card, work_project_item 두 곳에서 거의 같은 onKeyDown 로직이 중복되던 것을 통합)
+ */
+const activateProps = (onActivate: (e?: React.SyntheticEvent) => void) => ({
+  role: 'button' as const,
+  tabIndex: 0,
+  onClick: onActivate,
+  onKeyDown: (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onActivate(e);
+    }
+  },
+});
+
+// Project 섹션 상단의 카테고리 개요 카드 3개 (클릭 시 아래 상세 섹션으로 스크롤 이동)
 const work_categories = [
   {
     id: 1,
     title: '01 Professional Projects',
-    projects: ['Herzion Shop', 'ReportingX.', '스웨디시 뉴트라'],
+    projects: ['ReviewX', 'ReportingX.', 'Herzion Shop'],
     bgColor: '#ffffff',
     targetSection: 'professional',
   },
   {
     id: 2,
     title: '02 Learning Projects',
-    projects: ['Groundplace', 'IMELE', 'SAINT LAURENT', 'Waveyy'],
+    projects: ['냉부 | Recipe Community', 'Waveyy', 'Groundplace', 'IMELE', 'SAINT LAURENT'],
     bgColor: '#ffffff',
     targetSection: 'portfolio',
   },
@@ -148,55 +166,67 @@ const Project = () => {
     }
   };
 
-  const renderCard = (category: (typeof work_categories)[0], index: number) => (
-    <div
-      key={category.id}
-      ref={el => (cardsRef.current[index] = el)}
-      className="work_card"
-      style={{ backgroundColor: category.bgColor } as React.CSSProperties}
-      onClick={() => {
-        if (category.id === 2) {
-          scrollToSpecificProject(category.projects[0]);
-        } else {
-          scrollToSection(category.targetSection);
-        }
-      }}
-    >
-      <h2 className="work_card_title">
-        <span className="work_card_number">{category.title.split(' ')[0]}</span>
-        <span className="work_card_text">{category.title.split(' ').slice(1).join(' ')}</span>
-      </h2>
-      <ul className="work_project_list">
-        {category.projects.map((project, projectIndex) => (
-          <li
-            key={projectIndex}
-            className="work_project_item"
-            onClick={e => {
-              e.stopPropagation();
-              if (category.id === 2) {
+  const renderCard = (category: (typeof work_categories)[0], index: number) => {
+    const isLearningCategory = category.targetSection === 'portfolio';
+
+    // 카테고리 카드 전체를 클릭했을 때: Learning은 첫 프로젝트로, 나머지는 섹션 상단으로 이동
+    const handleCardActivate = () => {
+      if (isLearningCategory) {
+        scrollToSpecificProject(category.projects[0]);
+      } else {
+        scrollToSection(category.targetSection);
+      }
+    };
+
+    return (
+      <div
+        key={category.id}
+        ref={el => (cardsRef.current[index] = el)}
+        className="work_card"
+        style={{ backgroundColor: category.bgColor } as React.CSSProperties}
+        {...activateProps(handleCardActivate)}
+      >
+        <h2 className="work_card_title">
+          <span className="work_card_number">{category.title.split(' ')[0]}</span>
+          <span className="work_card_text">{category.title.split(' ').slice(1).join(' ')}</span>
+        </h2>
+        <ul className="work_project_list">
+          {category.projects.map((project, projectIndex) => {
+            // 프로젝트 개별 항목 클릭: 카드 전체 클릭 이벤트로 전파되지 않게 stopPropagation
+            const handleItemActivate = (e?: React.SyntheticEvent) => {
+              e?.stopPropagation();
+              if (isLearningCategory) {
                 scrollToSpecificProject(project);
               } else {
                 scrollToSection(category.targetSection);
               }
-            }}
-          >
-            {project}
-          </li>
-        ))}
-      </ul>
-      <div className="work_cursor_icon">
-        <img src={`${process.env.PUBLIC_URL}/hover_icn.svg`} alt="hover cursor" />
-        <span className="work_cursor_text">click!</span>
+            };
+
+            return (
+              <li
+                key={projectIndex}
+                className="work_project_item"
+                {...activateProps(handleItemActivate)}
+              >
+                {project}
+              </li>
+            );
+          })}
+        </ul>
+        <div className="work_cursor_icon">
+          <img src={`${process.env.PUBLIC_URL}/hover_icn.svg`} alt="" />
+          <span className="work_cursor_text">click!</span>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <section ref={sectionRef} className="work_section">
       <div className="work_container">
-        <h1 ref={titleRef} className="work_title">
+        <h2 ref={titleRef} className="work_title">
           Project.
-        </h1>
+        </h2>
 
         {isMobile ? (
           <Swiper

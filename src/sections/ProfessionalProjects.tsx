@@ -64,9 +64,9 @@ const ProfessionalProjects = () => {
   return (
     <section ref={sectionRef} className="professional_projects_section">
       <div className="professional_projects_container">
-        <h1 ref={titleRef} className="professional_projects_title">
+        <h2 ref={titleRef} className="professional_projects_title">
           Professional Projects
-        </h1>
+        </h2>
 
         <div className="professional_projects_grid">
           {professional_projects.map((project, index) => (

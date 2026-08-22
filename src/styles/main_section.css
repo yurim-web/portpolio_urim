@@ -52,6 +52,20 @@
   color: #cccccc;
 }
 
+.main_subtext {
+  margin: 18px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #667eea;
+  transition: color 0.3s ease;
+}
+
+[data-theme='dark'] .main_subtext {
+  color: #a8e6cf;
+}
+
 /* About Me 섹션 */
 .about_section {
   position: relative;
@@ -173,19 +187,6 @@
   color: #ffffff;
 }
 
-.about_description {
-  font-size: 19px;
-  color: #34495e;
-  line-height: 1.8;
-  margin: 0;
-  font-weight: 400;
-  transition: color 0.3s ease;
-}
-
-[data-theme='dark'] .about_description {
-  color: #cccccc;
-}
-
 /* 반응형 디자인 */
 @media (max-width: 1440px) {
   .main_title {
@@ -206,6 +207,10 @@
     font-size: 17px;
   }
 
+  .main_subtext {
+    font-size: 13px;
+  }
+
   .main_container {
     padding: 0 40px;
   }
@@ -222,6 +227,10 @@
 
   .main_description {
     font-size: 16px;
+  }
+
+  .main_subtext {
+    font-size: 12px;
   }
 }
 
@@ -342,5 +351,10 @@
   .main_description {
     font-size: 13px;
     line-height: 1.4;
+  }
+
+  .main_subtext {
+    font-size: 10px;
+    margin-top: 12px;
   }
 }
