@@ -119,6 +119,16 @@ const ProfessionalProjects = () => {
                       View
                     </a>
                   )}
+                  {project.manager_view_link && (
+                    <a
+                      href={project.manager_view_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="professional_project_button professional_project_button_manager_view"
+                    >
+                      Manager View
+                    </a>
+                  )}
                   {project.github_link && (
                     <a
                       href={project.github_link}

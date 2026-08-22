@@ -30,6 +30,7 @@ export interface ProfessionalProject {
   description: string;
   image: string;
   view_link?: string;
+  manager_view_link?: string; // 유저/파트너 화면과 관리자 화면 URL이 분리된 프로젝트용 (예: ReviewX)
   github_link?: string;
   demo_link?: string;
   guide_link?: string;
@@ -174,8 +175,8 @@ export const professional_projects: ProfessionalProject[] = [
     description:
       '리뷰어와 파트너를 연결해 캠페인 참여부터 콘텐츠 등록, 포인트 및 정산까지 관리할 수 있는 참여 기반 캠페인 플랫폼입니다. 리뷰어·파트너·일반관리자·최고관리자 역할별 화면과 라우팅 구조를 구현하고, 공통 컴포넌트를 구성해 반복 UI를 효율적으로 관리했습니다.',
     image: `${process.env.PUBLIC_URL}/assets/professional_projects/reviewx_banner.png`,
-    view_link:
-      'https://github.com/yurim-web/reviewx-front-backup/tree/deploy/portfolio#-%ED%99%94%EB%A9%B4-%EC%86%8C%EA%B0%9C',
+    view_link: 'https://reviewx-front-backup.vercel.app/',
+    manager_view_link: 'https://reviewx-front-backup.vercel.app/manager_ga',
     github_link: 'https://github.com/yurim-web/reviewx-front-backup',
   },
   {

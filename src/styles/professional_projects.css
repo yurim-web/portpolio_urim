@@ -303,6 +303,20 @@
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
+/* View(일반/파트너 화면)와 구분되는 관리자 화면 링크 — 사이트 포인트 컬러(인디고)로 통일 */
+.professional_project_button_manager_view {
+  background: #ffffff;
+  color: #667eea;
+  border-color: #667eea;
+}
+
+.professional_project_button_manager_view:hover {
+  background: #667eea;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
 .professional_project_button_github {
   background: #1f2937;
   color: #ffffff;
