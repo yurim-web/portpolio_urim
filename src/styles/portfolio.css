@@ -291,14 +291,6 @@
   display: none;
 }
 
-/* Swiper 라이브러리 기본 CSS(.swiper { padding: 0 })가 동일한 우선순위로 위 padding을
-   덮어써서, 상단 페이지네이션 점(top: 30px)이 카드 안 연도/제목 텍스트와 겹치던 버그가
-   있었음. 클래스 2개를 묶어 명시도를 높여서 확실히 이기도록 함 (모바일에서
-   "Learning Project" 글자 위에 점이 겹쳐 보이던 버그). */
-.portfolio_swiper.swiper {
-  padding-top: 56px;
-}
-
 .portfolio_swiper .swiper-slide {
   height: auto;
   display: flex;
@@ -314,6 +306,12 @@
      컨테이너가 실제 콘텐츠보다 짧게 잡혀 이미지 아래쪽이 잘려 보였다. 모바일에서는
      일반 흐름으로 되돌려 autoHeight가 슬라이드 실제 높이를 제대로 읽게 한다. */
   position: static;
+  /* 페이지네이션 점(top: 30px) 자리를 스와이퍼 컨테이너가 아니라 카드 쪽에 확보한다.
+     예전에는 .portfolio_swiper에 padding-top을 줬는데, 그러면 점 영역이 카드 고유
+     배경색(bgColor)이 아니라 섹션 전체 배경(연보라 그라데이션)으로 보여서 카드 위에
+     이질적인 흰 띠처럼 보였다. 카드 자신에게 padding을 줘서 점 영역도 카드 색으로
+     채워지도록 함 — 점은 여전히 .portfolio_swiper 기준 absolute라 카드 위에 얹힌다. */
+  padding-top: 56px;
 }
 
 .portfolio_swiper .swiper-pagination {
