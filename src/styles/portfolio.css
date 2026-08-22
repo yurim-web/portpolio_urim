@@ -291,6 +291,14 @@
   display: none;
 }
 
+/* Swiper 라이브러리 기본 CSS(.swiper { padding: 0 })가 동일한 우선순위로 위 padding을
+   덮어써서, 상단 페이지네이션 점(top: 30px)이 카드 안 연도/제목 텍스트와 겹치던 버그가
+   있었음. 클래스 2개를 묶어 명시도를 높여서 확실히 이기도록 함 (모바일에서
+   "Learning Project" 글자 위에 점이 겹쳐 보이던 버그). */
+.portfolio_swiper.swiper {
+  padding-top: 56px;
+}
+
 .portfolio_swiper .swiper-slide {
   height: auto;
   display: flex;

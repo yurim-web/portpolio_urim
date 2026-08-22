@@ -373,17 +373,14 @@
   background: linear-gradient(45deg, rgba(255, 248, 225, 0.4), rgba(255, 243, 176, 0.4));
 }
 
-/* 저작권 섹션 */
+/* 저작권 섹션 — 페이지 맨 마지막(Contact 다음)에 오는 일반 요소.
+   과거 position: fixed였는데, 뷰포트 하단에 항상 떠 있어서 스크롤 중인 다른 섹션의
+   버튼·텍스트 위에 계속 겹쳐 보이는 버그가 있었음 (Learning/Training 카드 하단 버튼 등). */
 .contact_copyright_section {
   background: transparent;
   padding: 20px 0;
   text-align: center;
   border-top: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
 }
 
 .contact_copyright_text {
