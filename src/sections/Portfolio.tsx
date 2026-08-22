@@ -46,6 +46,9 @@ const Portfolio = () => {
       const portfolioItems = portfolioItemsRef.current.filter(Boolean);
 
       // 각 슬라이드별 오프셋 (책 페이지처럼 엣지가 계단식으로 보이도록)
+      // ⚠️ 이 두 상수를 바꾸면 src/styles/portfolio.css의 .portfolio_content padding-right 주석도
+      //    같이 확인할 것 — 그 패딩은 여기서 계산되는 "가장 가까운 카드가 덮기 시작하는 지점"보다
+      //    콘텐츠가 항상 왼쪽에 있도록 맞춰둔 값이라, 슬라이드 수/오프셋이 바뀌면 함께 어긋난다.
       const maxOffset = 97;
       const step = 2.5;
       const totalItems = portfolioItems.length;
@@ -292,36 +295,50 @@ const Portfolio = () => {
             ))}
           </div>
         )}
-        <div className="portfolio_link_container">
-          <a
-            href={section.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="portfolio_link_button"
-          >
-            LINK
-          </a>
-          {section.github_link && (
-            <a
-              href={section.github_link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="portfolio_github_button"
-            >
-              GITHUB
-            </a>
-          )}
-        </div>
+        {(section.link || section.github_link) && (
+          <div className="portfolio_link_container">
+            {section.link && (
+              <a
+                href={section.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="portfolio_link_button"
+              >
+                {section.link_label ?? 'LINK'}
+              </a>
+            )}
+            {section.github_link && (
+              <a
+                href={section.github_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="portfolio_github_button"
+              >
+                GITHUB
+              </a>
+            )}
+          </div>
+        )}
       </div>
       <div className="portfolio_right_column">
-        <a
-          href={section.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="portfolio_image_container"
-        >
-          <img src={section.image} alt={section.title} className="portfolio_section_image" />
-        </a>
+        {/* link가 없는 프로젝트(예: 배포 링크 없는 냉부)는 같은 이미지를 클릭 불가능한 div로만 감싼다 */}
+        {(() => {
+          const image = (
+            <img src={section.image} alt={section.title} className="portfolio_section_image" />
+          );
+          return section.link ? (
+            <a
+              href={section.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="portfolio_image_container"
+            >
+              {image}
+            </a>
+          ) : (
+            <div className="portfolio_image_container">{image}</div>
+          );
+        })()}
       </div>
     </div>
   );
