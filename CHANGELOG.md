@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.3.0] - 2026-08-22
+
+### 콘텐츠 개편 (경력기술서 기준 최신화)
+
+- **메인/자기소개 문구**: "디자인부터 프론트엔드 개발까지" → "웹 개발자 이유림" 포지셔닝으로 교체, Frontend Experience · Backend Learning 서브텍스트 추가
+- **경력·학력**: 회사명·근무기간 최신화((주)청명종합광고기획 등), 학력·자격 최신순 재정렬, 정보처리기사 등 자격사항 추가
+- **공개 개인정보 정리**: 생년월일·휴대전화·카카오톡 오픈채팅 QR 삭제
+- **Professional Projects 재구성**: ReviewX 신규 추가(View/GitHub 링크 포함), ReportingX·Herzion Shop 기간·기술스택 갱신, 스웨디시 뉴트라 목록에서 제외
+- **Training Project(냉부 | Recipe Community)** 추가 — Learning Projects 캐러셀 첫 번째 슬라이드로 통합(DEMO VIDEO·GitHub 링크 포함)
+- **Skills 재구성**: Frontend / Backend·Cloud(학습 중) / Development Tools / Collaboration·Design Tools 카테고리로 재정리, 아이콘 전체를 실제 브랜드 로고 SVG로 교체
+- **경력기술서 PDF 다운로드** 버튼 추가 (헤더 데스크톱·모바일, Contact 섹션)
+
+### 버그·UI 수정
+
+- Learning/Training 프로젝트 카드 이미지가 다음 카드에 가려 잘리던 문제 수정
+- Contact "경력기술서" 버튼 색상을 사이트 인디고 톤에 맞게 교체, "Thank you" 이모지 하단 잘림 수정
+- 학력 리스트 줄바꿈이 단어 중간에서 끊기던 문제 수정 (`word-break: keep-all`)
+- 페이지 내 `h1` 중복(5개) → 1개로 정리, `id="about"` 중복 제거
+- 클릭 가능한 비-버튼 요소에 키보드(Enter/Space) 접근성 추가
+
+### 리팩토링 / 정리
+
+- `Project.tsx` 키보드 활성화 로직을 `activateProps` 헬퍼로 통합
+- `GitHubLink`/`ResumeLink` 공용 `ExternalLink` 컴포넌트로 통합
+- 사용하지 않는 이미지 자산 다수 삭제, 렌더링되지 않던 죽은 CSS(`.contact_form_*`, `.portfolio_project_*` 등) 제거
+- 오타 파일 `StrenthToggleBox.jsx` 삭제
+
 ## [0.2.0] - 2026-03-13
 
 ### 코드 구조 개선
