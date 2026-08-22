@@ -59,6 +59,7 @@
 ### 파일 변경 요약
 
 #### 신규 파일
+
 - `src/data/skillsData.ts`
 - `src/common/GitHubLink.tsx`
 - `src/hooks/useHeaderScroll.ts`
@@ -68,11 +69,13 @@
 - `CHANGELOG.md`
 
 #### 삭제 파일
+
 - `src/common/box/StrenthToggleBox.tsx` (오타 → StrengthToggleBox.tsx로 교체)
 - `src/utils/header.js` (→ hooks/useHeaderScroll.ts로 전환)
 - `src/utils/main.js` (→ hooks/useScrollAnimation.ts로 전환)
 
 #### 수정 파일
+
 - `src/contexts/ThemeContext.tsx` — camelCase 전환
 - `src/pages/header.tsx` — GitHubLink 컴포넌트 사용, camelCase
 - `src/pages/contact.tsx` — GitHubLink 컴포넌트 사용, 주석 코드 제거
