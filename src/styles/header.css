@@ -307,6 +307,28 @@
   color: #cccccc;
 }
 
+/* 다크모드 토글 — .theme_toggle_container(화면 우측 하단 고정 위젯)가 768px 이하에서
+   완전히 숨겨지기 때문에, 모바일에서는 이 메뉴 항목이 다크모드를 켤 수 있는 유일한
+   진입점이다. 스위치 자체(.theme_toggle_button/.theme_toggle_circle)는 theme_toggle.css의
+   기존 스타일을 그대로 재사용한다. */
+.mobile_theme_toggle_item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mobile_theme_toggle_label {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #333333;
+  transition: color 0.3s ease;
+}
+
+[data-theme='dark'] .mobile_theme_toggle_label {
+  color: #ffffff;
+}
+
 .mobile_social {
   margin-top: 20px;
   padding-top: 20px;

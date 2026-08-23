@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 
 import GitHubLink from '../common/GitHubLink';
 import ResumeLink from '../common/ResumeLink';
+import { useTheme } from '../contexts/ThemeContext';
 import useHeaderScroll from '../hooks/useHeaderScroll';
 import '../styles/header.css';
+import '../common/styles/theme_toggle.css';
 
 const Header = () => {
   useHeaderScroll();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(prev => !prev);
@@ -111,6 +114,17 @@ const Header = () => {
             <ResumeLink className="mobile_nav_link" onClick={closeMobileMenu}>
               RESUME PDF
             </ResumeLink>
+          </li>
+          <li className="mobile_theme_toggle_item">
+            <span className="mobile_theme_toggle_label">{isDarkMode ? 'DARK' : 'LIGHT'}</span>
+            <button
+              type="button"
+              className={`theme_toggle_button ${isDarkMode ? 'dark_mode' : 'light_mode'}`}
+              onClick={toggleDarkMode}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              <div className="theme_toggle_circle" />
+            </button>
           </li>
           <li className="mobile_social">
             <GitHubLink
