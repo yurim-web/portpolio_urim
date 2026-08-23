@@ -62,6 +62,7 @@ release/x.0.0      → 특정 시점의 마일스톤 스냅샷 (frozen)
 |---|---|---|---|
 | `release/1.0.0` | `6c450c4` (2025.09.26) | `0.1.0` | React + TS 초기 구현, GSAP 애니메이션, 다크모드, 반응형, gh-pages 배포 |
 | `release/2.0.0` | `2f059f0` (2026.08) | `0.2.0` | `pages/` → `sections/` 구조 개편, 네이밍 컨벤션 통일, 훅 전환, ESLint/Prettier 도입, 문서화(component-spec.md) |
+| `release/3.0.0` | `b3e419d` (2026.08.23) | `0.3.0` | 경력기술서 기준 콘텐츠 전면 개편(About/Skills/Projects), ReviewX·냉부(Training Project) 추가, 이력서 PDF 다운로드 버튼, 모바일 반응형 다수 수정, 미사용 코드/파일/의존성 정리 |
 
 ---
 
