@@ -153,65 +153,6 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.web_design_card_tech_stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.web_design_tech_pill {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 500;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.web_design_card_meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.web_design_card_year {
-  font-weight: 600;
-}
-
-.web_design_card_category {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 4px 8px;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-}
-
-.web_design_card_link {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.web_design_card_link:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
 /* 모달 스타일 */
 .web_design_modal {
   position: fixed;
@@ -527,16 +468,6 @@
     margin-bottom: 18px;
   }
 
-  .web_design_tech_pill {
-    font-size: 12px;
-    padding: 6px 10px;
-  }
-
-  .web_design_card_link {
-    padding: 12px 24px;
-    font-size: 14px;
-  }
-
   .web_design_click_hint {
     font-size: 10px;
     padding: 5px 10px;
@@ -573,16 +504,6 @@
   .web_design_card_description {
     font-size: 12px;
     margin-bottom: 15px;
-  }
-
-  .web_design_tech_pill {
-    font-size: 11px;
-    padding: 5px 8px;
-  }
-
-  .web_design_card_link {
-    padding: 10px 20px;
-    font-size: 13px;
   }
 
   .web_design_click_hint {
