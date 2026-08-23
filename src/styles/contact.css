@@ -373,17 +373,14 @@
   background: linear-gradient(45deg, rgba(255, 248, 225, 0.4), rgba(255, 243, 176, 0.4));
 }
 
-/* 저작권 섹션 */
+/* 저작권 섹션 — 페이지 맨 마지막(Contact 다음)에 오는 일반 요소.
+   과거 position: fixed였는데, 뷰포트 하단에 항상 떠 있어서 스크롤 중인 다른 섹션의
+   버튼·텍스트 위에 계속 겹쳐 보이는 버그가 있었음 (Learning/Training 카드 하단 버튼 등). */
 .contact_copyright_section {
   background: transparent;
   padding: 20px 0;
   text-align: center;
   border-top: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
 }
 
 .contact_copyright_text {
@@ -470,8 +467,20 @@
     align-items: center;
   }
 
+  /* 폭을 명시하지 않으면 내용물 크기만큼만 차지하는 shrink-to-fit 박스가 되는데,
+     그 안의 contact_social만 width: 100%라 서로 다른 기준으로 중앙정렬되면서
+     제목/이메일 줄과 버튼 줄의 중심이 미묘하게 어긋나 보였음 — 폭을 통일해서 해결 */
   .contact_info {
     align-items: center;
+    width: 100%;
+  }
+
+  /* 1024px 구간에서 걸어둔 align-items: flex-start(왼쪽 정렬)가 여기서 다시
+     center로 재정의되지 않아서, 이메일 줄·버튼 줄·Thank you가 제목/부제목과
+     다른 기준(왼쪽 정렬)으로 배치되던 게 진짜 원인 — 중앙정렬로 되돌림 */
+  .contact_details {
+    align-items: center;
+    width: 100%;
   }
 
   .contact_title {
@@ -491,7 +500,17 @@
     justify-content: center;
   }
 
+  /* 아이콘 버튼(원형) + 필 버튼 2개가 가로 wrap으로 걸리면 "2개+1개"로 줄바꿈되면서
+     좌우 정렬이 어긋나 보였음 — 모바일에서는 세로로 가지런히 쌓아서 정리 */
   .contact_social {
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .contact_mail_btn {
+    width: 100%;
+    max-width: 280px;
     justify-content: center;
   }
 
