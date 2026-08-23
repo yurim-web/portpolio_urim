@@ -21,7 +21,7 @@ const ThemeToggle: React.FC = () => {
 
   return (
     <div className="theme_toggle_container">
-      <span className="theme_toggle_label">LIGHT</span>
+      <span className="theme_toggle_label">{isDarkMode ? 'DARK' : 'LIGHT'}</span>
       <button
         className={`theme_toggle_button ${isDarkMode ? 'dark_mode' : 'light_mode'}`}
         onClick={toggleDarkMode}
