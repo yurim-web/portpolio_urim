@@ -12,14 +12,6 @@
   transition: all 0.3s ease;
 }
 
-.resume_toggle_label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #333333;
-  letter-spacing: 0.5px;
-  transition: color 0.3s ease;
-}
-
 .resume_dots_container {
   display: flex;
   flex-direction: column;
@@ -50,10 +42,6 @@
 }
 
 /* 다크모드 스타일 */
-
-[data-theme='dark'] .resume_toggle_label {
-  color: #ffffff;
-}
 
 [data-theme='dark'] .resume_dot {
   background-color: #666666;
