@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.3.1] - 2026-08-24
+
+### 콘텐츠
+
+- 경력기술서 PDF 최신본으로 교체
+- ReviewX View 링크를 GitHub README 앵커에서 실제 배포 주소(vercel)로 교체, 유저/파트너
+  화면과 관리자 화면 URL이 분리되어 있어 **Manager View** 버튼 추가
+
+### 버그·UI 수정
+
+- 모바일 Learning/Training Project 캐러셀에서 카드가 잘리거나 빈 여백이 남던 문제 근본 수정
+  (`position: absolute` → `static`, Swiper `autoHeight` 적용)
+- 모바일 캐러셀 pagination 점 영역이 카드 고유 배경색이 아닌 흰 띠로 보이던 문제 수정
+- Contact 섹션 모바일 배치 수정 — 소셜 버튼 줄바꿈으로 좌우 정렬이 어긋나던 문제, 하위 요소가
+  제목/이메일과 다른 기준(왼쪽 정렬)으로 배치되던 문제 근본 수정
+- 다크모드 토글 라벨이 실제 상태와 무관하게 항상 "LIGHT"로 고정 표시되던 문제 수정
+- 다크모드 토글이 모바일(≤768px)에서 완전히 숨겨져 있어 모바일에서는 다크모드를 켤 방법이
+  없었던 접근성 문제 해결 — 모바일 메뉴에 동일한 토글 추가
+
+### 리팩토링 / 정리
+
+- 사용하지 않는 CSS 클래스 삭제 (`.view_more_btn`, `.strength_section`,
+  `.web_design_card_*` 등 — 모달 기반 상세보기로 바뀌기 전 옛 디자인의 잔재)
+- 사용하지 않는 npm 의존성 7개 제거 (`react-helmet-async`, `web-vitals`,
+  `@testing-library/*`, `@types/jest`)
+- `release/3.0.0` 마일스톤 브랜치 생성
+
 ## [0.3.0] - 2026-08-22
 
 ### 콘텐츠 개편 (경력기술서 기준 최신화)
