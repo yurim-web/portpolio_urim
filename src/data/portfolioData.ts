@@ -168,8 +168,8 @@ export const professional_projects: ProfessionalProject[] = [
     tech_stack: [
       { name: 'React', icon: `${process.env.PUBLIC_URL}/assets/skill_img/react.svg` },
       { name: 'Next.js', icon: `${process.env.PUBLIC_URL}/assets/skill_img/nextjs.svg` },
-      { name: 'JavaScript', icon: `${process.env.PUBLIC_URL}/assets/skill_img/javscript.svg` },
-      { name: 'Chart.js', icon: `${process.env.PUBLIC_URL}/assets/skill_img/chartjs.svg` },
+      { name: 'TypeScript', icon: `${process.env.PUBLIC_URL}/assets/skill_img/typescript.svg` },
+      { name: 'Recharts', icon: `${process.env.PUBLIC_URL}/assets/skill_img/recharts.svg` },
       { name: 'Git', icon: `${process.env.PUBLIC_URL}/assets/skill_img/git.svg` },
     ],
     description:
